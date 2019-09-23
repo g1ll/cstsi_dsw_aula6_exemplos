@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import Contador from './Contador'
+import ShowProduto from './ShowProduto';
 import './App.css';
 
 function App() {
+  //TRABALHANDO COM ESTADOS
+  const msg = "Olá Mundo!"
+  const [texto,setTexto] = useState(msg)
+  
+  ///setTimeout(()=>{setTexto('asdf')},1000)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>{msg}</p>
+      <input type='text' value={texto} onChange={(e)=>setTexto(e.target.value)}/>
+      <p>{texto}</p>
+      <Contador />
+      <ShowProduto/>
     </div>
   );
 }
