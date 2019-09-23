@@ -9,7 +9,7 @@ import axios from 'axios';
     if(resp.data.length>0)
       return resp.data
     else
-       return {name:`Não encontrado item ${termo}`};
+       return {error:`Não encontrado item ${termo}`};
   }
 
   async function getProdById(id){
@@ -18,7 +18,7 @@ import axios from 'axios';
     if(resp.data.length>0)
     return resp.data
   else
-     return {name:`Não encontrado: id=${id}`};
+     return {error:`Não encontrado: id=${id}`};
   }
 
 //}

@@ -1,5 +1,4 @@
 import React, { useState,useEffect } from 'react';
-// import ApiProdFetch, {fetchProds} from './ApiProdFetch';
 import {searchProd,getProdById} from './ApiProdFetch';
 import './App.css';
 
@@ -10,11 +9,17 @@ const ShowProduto=()=>{
   let [req_query,setQuery] = useState(iniQuery);
 
   useEffect(()=>{
-  console.log('useEffect')
-    if(req_query!=='')
-      getProdutos(req_query);
+    if(req_query!=='') getProdutos(req_query);
     else setProdutos([])
   },[])
+
+  async function getProdutos(query){
+    setQuery(query)
+    setProdutos(
+      ! isNaN(query) ? await getProdById(Number(query))
+            : await searchProd(query)
+      )
+  }
 
   return (
         <div className="App">
@@ -41,21 +46,11 @@ const ShowProduto=()=>{
                     <td>{prod.preco}</td>
                   </tr>)
                   )
-            ):(produtos.name!=='undefined'?<tr ><td >{produtos.name}</td></tr>:
+            ):(produtos.error!=='undefined'?<tr ><td >{produtos.error}</td></tr>:
             <tr ><td colSpan={4} >Sem Produtos</td></tr>
             )}</tbody></table></div>
         </div>
-    );
-
-    async function getProdutos(query){
-      setQuery(query)
-      let type = isNaN(query);
-      let prods = [];
-      if(!type)
-           prods = await getProdById(Number(query));
-      else  prods = await searchProd(query);
-        setProdutos(prods)
-    };
+    )
 }
 
 export default ShowProduto;
