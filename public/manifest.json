@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Exemplos de Aula",
+  "homepage": "http://g1ll.000webhostapp.com/exemplos_react/",
+  "name": "Primeiros Exemplos com React",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,5 +1,6 @@
 {
-  "name": "first-course-tuts-plus",
+  "name": "exemplos_react",
+  "homepage": "http://g1ll.000webhostapp.com/exemplos_react/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
