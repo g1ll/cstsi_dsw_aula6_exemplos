@@ -3,7 +3,8 @@ import axios from 'axios';
  //function ApiProdFetch() {//função para pegar os dados da API
  const ApiProdFetch = {
 
-  url: 'http://localhost/2019/tsi/dsw/apiProds/produto/',
+  // url: 'http://localhost/2019/tsi/dsw/apiProds/produto/', 
+  url: 'http://g1ll.000webhostapp.com/produto/', 
   
   searchProd: async function(termo){
     console.log(termo);
