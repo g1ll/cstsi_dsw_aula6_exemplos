@@ -5,6 +5,7 @@
     width: 50%;
     border: solid 2px grey;
     border-radius: 20px; 
+    min-width: 260px;
 }
 
 .showProds table{
@@ -17,4 +18,19 @@
 
 .showProds table tr:nth-child(even) td{
     background: lightgray;
+}
+
+
+@media(max-width: 360px){
+    .showProds{
+        width: 90%;
+    }
+}
+
+
+
+@media (max-width: 760px) {
+    .showProds{
+        width: 70%;
+    }
 }

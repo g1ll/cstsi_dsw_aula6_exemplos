@@ -4,7 +4,7 @@ import axios from 'axios';
  const ApiProdFetch = {
 
   // url: 'http://localhost/2019/tsi/dsw/apiProds/produto/', 
-  url: 'http://g1ll.000webhostapp.com/produto/', 
+  url: 'http://g1ll.000webhostapp.com/apiProds/produto/', 
   
   searchProd: async function(termo){
     console.log(termo);
