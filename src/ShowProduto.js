@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import {searchProd,getProdById} from './ApiProdFetch';
-import './App.css';
+import apiProd from './apiProdFetch';
+import './ShowProds.css';
 
 const ShowProduto=()=>{
 
@@ -9,25 +9,27 @@ const ShowProduto=()=>{
   let [req_query,setQuery] = useState(iniQuery);
 
   useEffect(()=>{
+    console.log(req_query)
     if(req_query!=='') getProdutos(req_query);
-    else setProdutos([])
+    // else setProdutos([])
   },[])
 
   async function getProdutos(query){
-    setQuery(query)
-    setProdutos(
-      ! isNaN(query) ? await getProdById(Number(query))
-            : await searchProd(query)
-      )
+    // setQuery(query)
+    if(req_query!=='')
+      setProdutos(
+        isNaN(query) ?  await apiProd.searchProd(query)
+              : await apiProd.getProdById(Number(query))
+        )
   }
 
   return (
-        <div className="App">
-          BUSCA:<input type='text' value={req_query} onChange={(e)=>setQuery(e.target.value)}/>
+        <div className="showProds">
+          BUSCA:<input type='text' value={req_query} onChange={(e)=>{setQuery(e.target.value)}}/>
             <button onClick={()=>getProdutos(req_query)}>BUSCAR</button>
             <div>
             <h3>Produtos:</h3>
-            <table border='1' style={{margin:'0 auto'}}>
+            <table>
             {produtos.length > 0 ? 
               <thead><tr>
               <th>ID</th>
